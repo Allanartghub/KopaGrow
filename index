@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopa Grow - Empowering Small Businesses</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+            color: #202124;
+            line-height: 1.6;
+        }
+        nav {
+            background-color: #1A73E8;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #34A853;
+        }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #F1F3F4;
+            animation: fadeIn 2s ease-in-out;
+        }
+        header h1 {
+            font-size: 2.5em;
+            color: #1A73E8; /* Section title color */
+        }
+        header p {
+            font-size: 1.2em;
+            margin: 10px 0 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1em;
+            color: #FFFFFF;
+            background-color: #1A73E8;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #1558C0;
+        }
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .step {
+            text-align: center;
+            max-width: 300px;
+            animation: slideIn 1s ease-in-out;
+        }
+        .step img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+        .testimonials {
+            padding: 50px 20px;
+            background-color: #F1F3F4;
+            text-align: center;
+        }
+        .testimonials h2 {
+            color: #1A73E8;
+        }
+        .testimonial-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .testimonial {
+            max-width: 300px;
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #F1F3F4;
+            color: #202124;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="homepage.html" class="logo" style="color: #FFFFFF; text-decoration: none;">Kopa Grow 🌱</a>
+        <ul>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="investorspage.html">Investor Page</a></li>
+            <li><a href="loanapplication.html">Loan Application</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Empowering Small Businesses with Smart Micro-Loans</h1>
+        <p>Quick, collateral-free loans to help your business grow. 🚀</p>
+        <a href="loanapplication.html" class="cta-button">Get Funded</a>
+    </header>
+
+    <section id="how-it-works" class="steps">
+        <div class="step">
+            <img src="icon1.png" alt="Step 1">
+            <h3>Step 1 📝</h3>
+            <p>Sign up and provide basic details.</p>
+        </div>
+        <div class="step">
+            <img src="icon2.png" alt="Step 2">
+            <h3>Step 2 📊</h3>
+            <p>Get an instant credit assessment.</p>
+        </div>
+        <div class="step">
+            <img src="icon3.png" alt="Step 3">
+            <h3>Step 3 💸</h3>
+            <p>Receive funds directly to your account.</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Our Partners Say 💬</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p>"Kopa Grow helped us expand our business in record time!"</p>
+                <strong>- Small Business Owner</strong>
+            </div>
+            <div class="testimonial">
+                <p>"The process was seamless and transparent. Highly recommend!"</p>
+                <strong>- Entrepreneur</strong>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Kopa Grow. All rights reserved. 🌍</p>
+    </footer>
+
+    <script>
+        // Add interactivity for navigation
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // CTA button interactivity
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            alert('Redirecting to the loan application page...');
+        });
+    </script>
+</body>
+</html>
