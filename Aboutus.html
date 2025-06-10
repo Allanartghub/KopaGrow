@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Kopa Grow</title>
+    <!-- Google Fonts for Poppins and Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --midnight-blue: #1C1F33;
+            --soft-white: #F9FAFB;
+            --slate-gray: #6B7280;
+            --emerald-green: #10B981;
+            --sunset-orange: #F97316;
+        }
+        html, body {
+            background-color: var(--soft-white);
+            color: var(--midnight-blue);
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', 'Manrope', Arial, sans-serif;
+            font-weight: 700;
+            color: var(--midnight-blue);
+            margin-top: 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: var(--emerald-green);
+        }
+        h2 {
+            font-size: 2em;
+            color: var(--emerald-green);
+        }
+        h3 {
+            font-size: 1.3em;
+        }
+        nav {
+            background-color: var(--midnight-blue);
+            color: var(--soft-white);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: var(--emerald-green) !important;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: var(--soft-white);
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+        nav ul li a:hover {
+            color: var(--emerald-green);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--soft-white);
+            color: var(--slate-gray);
+            font-size: 1em;
+            border-top: 1px solid #e5e7eb;
+        }
+        .section {
+            padding: 50px 20px;
+            background: var(--soft-white);
+        }
+        .section h2 {
+            margin-bottom: 20px;
+        }
+        .section p, .section ul, .section li {
+            color: var(--slate-gray);
+            font-family: 'Inter', Arial, sans-serif;
+            font-weight: 400;
+        }
+        .metrics-section {
+            background-color: #F3F4F6;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .metrics {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .metric {
+            text-align: center;
+            transition: transform 0.3s, color 0.3s;
+        }
+        .metric:hover {
+            transform: scale(1.07);
+            color: var(--emerald-green);
+        }
+        .metric h3 {
+            font-size: 2em;
+            color: var(--emerald-green);
+            margin-bottom: 10px;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        .metric p {
+            font-size: 1em;
+            color: var(--slate-gray);
+        }
+        .team-section {
+            text-align: center;
+            background-color: #F3F4F6;
+            padding: 50px 20px;
+        }
+        .team-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        .team-card {
+            background: var(--soft-white);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(28,31,51,0.06);
+            padding: 24px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 700px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: 1px solid #e5e7eb;
+        }
+        .team-card:hover {
+            box-shadow: 0 6px 24px rgba(16,185,129,0.13);
+            transform: translateY(-4px) scale(1.02);
+            border-color: var(--emerald-green);
+        }
+        .team-card img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: #E5E7EB;
+            margin-left: 24px;
+            object-fit: cover;
+            border: 3px solid var(--emerald-green);
+        }
+        .team-card h3 {
+            color: var(--midnight-blue);
+            margin-bottom: 4px;
+        }
+        .team-card p {
+            color: var(--slate-gray);
+            margin: 0 0 6px 0;
+            font-size: 1em;
+        }
+        /* Timeline styles */
+        .timeline-section {
+            background: var(--soft-white);
+            padding: 50px 20px 30px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline {
+            position: relative;
+            margin: 40px 0 0 0;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--emerald-green);
+            border-radius: 2px;
+        }
+        .timeline-event {
+            position: relative;
+            margin-bottom: 36px;
+            padding-left: 32px;
+        }
+        .timeline-event:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -2px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            background: var(--emerald-green);
+            border-radius: 50%;
+            border: 3px solid var(--soft-white);
+            box-shadow: 0 0 0 2px var(--emerald-green);
+        }
+        .timeline-event h4 {
+            margin: 0 0 4px 0;
+            font-size: 1.1em;
+            color: var(--midnight-blue);
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        .timeline-event p {
+            margin: 0;
+            color: var(--slate-gray);
+            font-size: 1em;
+        }
+        /* Entrepreneur photos grid */
+        .entrepreneurs-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px 0 0 0;
+        }
+        .entrepreneur-card {
+            background: var(--soft-white);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(28,31,51,0.06);
+            padding: 16px 12px;
+            width: 180px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+        .entrepreneur-card:hover {
+            box-shadow: 0 4px 16px rgba(249,115,22,0.13);
+            border-color: var(--sunset-orange);
+        }
+        .entrepreneur-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 2px solid var(--emerald-green);
+        }
+        .entrepreneur-card p {
+            font-size: 0.95em;
+            color: var(--slate-gray);
+            margin: 0;
+        }
+        /* Responsive */
+        @media (max-width: 700px) {
+            .team-card {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                max-width: 98vw;
+            }
+            .team-card img {
+                margin: 16px 0 0 0;
+            }
+            .metrics {
+                flex-direction: column;
+                gap: 24px;
+            }
+            .entrepreneurs-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo" style="text-decoration: none;">Kopa Grow 🌱</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="loanapplication.html">Loan Application</a></li>
+            <li><a href="investorspage.html">Investor Page</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <section id="about" class="section">
+        <h1>🌱 About Us – Kopa Grow</h1>
+        <p style="font-size:1.2em; color:var(--midnight-blue); font-weight:600;">Empowering Small Businesses to Thrive</p>
+        <p>At Kopa Grow, we believe that access to finance should never be a barrier to growth. Our platform is built for small business owners, entrepreneurs, and side-hustlers in emerging markets who are brimming with potential — but often overlooked by traditional lenders.</p>
+    </section>
+
+    <!-- Who We Are Section with Timeline and Entrepreneur Photos -->
+    <section class="timeline-section">
+        <h2>Who We Are</h2>
+        <div class="timeline">
+            <div class="timeline-event">
+                <span class="timeline-dot"></span>
+                <h4>2018 – The Spark</h4>
+                <p>Our founders witnessed firsthand how talented entrepreneurs struggled to access fair financing. The idea for Kopa Grow was born from a desire to bridge this gap.</p>
+            </div>
+            <div class="timeline-event">
+                <span class="timeline-dot"></span>
+                <h4>2019 – Building the Platform</h4>
+                <p>We assembled a passionate team and began building a digital-first lending platform, leveraging alternative data and AI to unlock new opportunities.</p>
+            </div>
+            <div class="timeline-event">
+                <span class="timeline-dot"></span>
+                <h4>2020 – First Loans Disbursed</h4>
+                <p>Kopa Grow launched in pilot markets, empowering our first cohort of entrepreneurs to grow their businesses and impact their communities.</p>
+            </div>
+            <div class="timeline-event">
+                <span class="timeline-dot"></span>
+                <h4>2021–2024 – Scaling Impact</h4>
+                <p>We expanded our reach, refined our technology, and helped thousands of small businesses thrive across emerging markets.</p>
+            </div>
+        </div>
+        <div class="entrepreneurs-grid">
+            <div class="entrepreneur-card">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=facearea&w=256&q=80" alt="Entrepreneur 1">
+                <p>Mary, Nairobi – Grew her retail shop with Kopa Grow's support.</p>
+            </div>
+            <div class="entrepreneur-card">
+                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=facearea&w=256&q=80" alt="Entrepreneur 2">
+                <p>Samuel, Kisumu – Expanded his agribusiness thanks to accessible micro-loans.</p>
+            </div>
+            <div class="entrepreneur-card">
+                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=facearea&w=256&q=80" alt="Entrepreneur 3">
+                <p>Grace, Eldoret – Launched a tailoring business and created jobs in her community.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>🌍 Why We Exist</h2>
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+            <img src="why-we-exist.jpg" alt="Why We Exist" style="width: 50%; border-radius: 10px; max-width:340px;">
+            <p>Across many emerging economies, small businesses face the largest funding gap — yet they create the most jobs and drive community-level economic growth. Unfortunately, traditional banking systems often require high collateral or rigid credit histories, which excludes millions of promising entrepreneurs.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>🔍 What Makes Us Different</h2>
+        <ul>
+            <li>💡 <strong>AI-Powered Credit Assessment:</strong> We use alternative data like mobile payments, transaction patterns, and social proof to evaluate creditworthiness in real time.</li>
+            <li>🤝 <strong>No Collateral Required:</strong> Our micro-loans are unsecured — we believe in potential, not just paperwork.</li>
+            <li>📱 <strong>Seamless Digital Experience:</strong> From application to repayment, our platform is mobile-first, intuitive, and fast.</li>
+            <li>📊 <strong>Transparent Terms:</strong> Clear fees, no hidden costs, and smart repayment plans tailored to your cash flow.</li>
+        </ul>
+    </section>
+
+    <section class="metrics-section">
+        <h2>📊 Our Impact</h2>
+        <div class="metrics">
+            <div class="metric">
+                <h3>10,000+</h3>
+                <p>Businesses Served</p>
+            </div>
+            <div class="metric">
+                <h3>€50M+</h3>
+                <p>Loans Disbursed</p>
+            </div>
+            <div class="metric">
+                <h3>5+</h3>
+                <p>Years of Service</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2>👥 Meet the Team Behind Kopa Grow</h2>
+        <p>At the heart of Kopa Grow is a mission-driven team that blends deep expertise in fintech, technology, and development with a shared vision for inclusive growth. Here's who’s leading the charge:</p>
+        <div class="team-cards">
+            <div class="team-card">
+                <div>
+                    <h3>Allan Ng’ang’a</h3>
+                    <p><strong>Founder & CEO</strong></p>
+                    <p>A seasoned fintech and financial inclusion expert, Allan has dedicated his career to expanding access to finance in underserved communities.</p>
+                </div>
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQHHrGwThLCy_Q/profile-displayphoto-shrink_400_400/B4DZcjBYR9GYAg-/0/1748639254459?e=1755129600&v=beta&t=XrnBNi65dM8aY3FDijX_yirRzPQJcb4qZHlMsrCRytc" alt="Allan Ng’ang’a">
+            </div>
+            <div class="team-card">
+                <div>
+                    <h3>Hope Okeyo</h3>
+                    <p><strong>Chief Technology Officer (CTO)</strong></p>
+                    <p>Hope is a data analyst by profession with a passion for leveraging technology to drive impactful, lasting change.</p>
+                </div>
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQGbzcuRqJaRDw/profile-displayphoto-shrink_400_400/B4DZOxEmXWHgAk-/0/1733842594063?e=1749686400&v=beta&t=96zylXudoKru6NGAaW_XnXlg9IctX746QX775nA9FpU" alt="Hope Okeyo">
+            </div>
+            <div class="team-card">
+                <div>
+                    <h3>Isaac Kuttoh</h3>
+                    <p><strong>Co-Founder & Head of Software Engineering & Cybersecurity</strong></p>
+                    <p>Isaac leads our engineering and cybersecurity efforts, ensuring the platform is secure, scalable, and future-ready.</p>
+                </div>
+                <img src="https://media.licdn.com/dms/image/v2/C4D03AQETphZHgzg-WQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1616993925963?e=1749686400&v=beta&t=sl0sX8kTRXcp_rn96wzO-TcbEO61He7oVIfTQa_RQhs" alt="Isaac Kuttoh">
+            </div>
+            <div class="team-card">
+                <div>
+                    <h3>Angela Muriithi</h3>
+                    <p><strong>Head of People and Resources</strong></p>
+                    <p>Angela brings a wealth of experience in human resource management across the development and social enterprise sectors.</p>
+                </div>
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQEzQ3A089tDHg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1677686577715?e=1749686400&v=beta&t=BzL_DDQFrfGVgQABJaRmDFM2lPYVeM9VdYRKtnGbS4o" alt="Angela Muriithi">
+            </div>
+            <div class="team-card">
+                <div>
+                    <h3>Diana Kuria</h3>
+                    <p><strong>Head of Marketing</strong></p>
+                    <p>Diana ensures our products reach the right audiences and integrates customer feedback into every step of our growth journey.</p>
+                </div>
+                <img src="https://media.licdn.com/dms/image/v2/D4D35AQGzixRAHLeHIg/profile-framedphoto-shrink_400_400/B4DZYOobyQH4Ac-/0/1744002203138?e=1744833600&v=beta&t=c15Fb90JcmIlPnY7K3JxTZOr95G2QLKYCv5VvTtZHSE" alt="Diana Kuria">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>💬 Want to Partner With Us? Reach out at <a href="mailto:contact@kopagrow.com" style="color:var(--emerald-green);text-decoration:underline;">contact@kopagrow.com</a>.</p>
+        <p>&copy; 2025 Kopa Grow. All rights reserved. 🌍</p>
+    </footer>
+</body>
+</html>
