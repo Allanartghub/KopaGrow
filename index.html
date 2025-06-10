@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kopa Grow - Empowering Small Businesses</title>
-    <!-- Google Fonts for Poppins and Inter -->
+    <title>Frequently Asked Questions - Kopa Grow</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,30 +14,109 @@
             --sunset-orange: #F97316;
         }
         html, body {
-            background-color: var(--soft-white);
+            background: var(--soft-white);
             color: var(--midnight-blue);
+            font-family: 'Inter', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', Arial, sans-serif;
-            line-height: 1.6;
-        }
-        h1, h2, h3, h4 {
-            font-family: 'Poppins', Arial, sans-serif;
-            font-weight: 700;
-            color: var(--midnight-blue);
-            margin-top: 0;
         }
         h1 {
-            font-size: 2.5em;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-size: 2.2em;
+            font-weight: 700;
             color: var(--emerald-green);
+            margin-bottom: 8px;
         }
-        h2 {
-            font-size: 2em;
-            color: var(--emerald-green);
+        .faq-header {
+            text-align: center;
+            margin: 40px 0 20px 0;
         }
-        h3 {
-            font-size: 1.2em;
+        .faq-subtext {
+            color: var(--slate-gray);
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+        .faq-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin: 0 auto 30px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(28,31,51,0.06);
+        }
+        .faq-tab-btn {
+            flex: 1 1 0;
+            padding: 16px 0;
+            background: none;
+            border: none;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-size: 1.08em;
+            font-weight: 600;
             color: var(--midnight-blue);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+        .faq-tab-btn.active {
+            color: var(--emerald-green);
+            background: #F3F4F6;
+            border-bottom: 3px solid var(--emerald-green);
+        }
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+        .faq-item {
+            background: var(--soft-white);
+            border-radius: 12px;
+            margin-bottom: 18px;
+            box-shadow: 0 1px 4px rgba(28,31,51,0.06);
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+        .faq-question {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 18px 22px;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 600;
+            font-size: 1.08em;
+            color: var(--midnight-blue);
+            background: var(--soft-white);
+            border: none;
+            outline: none;
+            transition: background 0.2s;
+        }
+        .faq-question:hover {
+            background: #f3f4f6;
+        }
+        .faq-icon {
+            font-size: 1.3em;
+            margin-right: 16px;
+            color: var(--emerald-green);
+            transition: transform 0.3s;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            background: #fff;
+            color: var(--slate-gray);
+            font-size: 1em;
+            padding: 0 22px;
+            transition: max-height 0.4s cubic-bezier(.4,0,.2,1), padding 0.3s;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 14px 22px 18px 54px;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            color: var(--sunset-orange);
         }
         nav {
             background-color: var(--midnight-blue);
@@ -74,145 +152,6 @@
         nav ul li a:hover {
             color: var(--emerald-green);
         }
-        header {
-            text-align: center;
-            padding: 60px 20px 40px 20px;
-            background-color: var(--soft-white);
-            animation: fadeIn 2s ease-in-out;
-        }
-        header h1 {
-            font-size: 2.7em;
-            color: var(--emerald-green);
-            font-family: 'Poppins', Arial, sans-serif;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        header p {
-            font-size: 1.25em;
-            color: var(--slate-gray);
-            margin: 10px 0 28px;
-            font-family: 'Inter', Arial, sans-serif;
-        }
-        .cta-button {
-            display: inline-block;
-            padding: 16px 36px;
-            font-size: 1.1em;
-            color: #fff;
-            background-color: var(--emerald-green);
-            border: none;
-            border-radius: 25px;
-            text-decoration: none;
-            font-family: 'Poppins', Arial, sans-serif;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(16,185,129,0.10);
-            transition: background 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-        .cta-button:hover {
-            background: var(--sunset-orange);
-            color: #fff;
-            box-shadow: 0 6px 18px rgba(249,115,22,0.13);
-        }
-        .steps {
-            display: flex;
-            justify-content: space-around;
-            padding: 50px 20px 30px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-            background: var(--soft-white);
-        }
-        .step {
-            text-align: center;
-            max-width: 300px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(28,31,51,0.06);
-            padding: 28px 18px 22px 18px;
-            margin: 0 10px;
-            border: 1px solid #e5e7eb;
-            animation: slideIn 1s ease-in-out;
-            transition: box-shadow 0.3s, border-color 0.3s;
-        }
-        .step:hover {
-            box-shadow: 0 6px 24px rgba(16,185,129,0.13);
-            border-color: var(--emerald-green);
-        }
-        .step img {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 15px;
-            border-radius: 50%;
-            border: 2px solid var(--emerald-green);
-            background: #e5e7eb;
-            object-fit: cover;
-        }
-        .step h3 {
-            color: var(--emerald-green);
-            font-family: 'Poppins', Arial, sans-serif;
-            font-size: 1.1em;
-            margin-bottom: 8px;
-        }
-        .step p {
-            color: var(--slate-gray);
-            font-size: 1em;
-            font-family: 'Inter', Arial, sans-serif;
-        }
-        .testimonials {
-            padding: 50px 20px 30px 20px;
-            background-color: #F3F4F6;
-            text-align: center;
-        }
-        .testimonials h2 {
-            color: var(--emerald-green);
-            font-family: 'Poppins', Arial, sans-serif;
-        }
-        .testimonial-grid {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-top: 24px;
-        }
-        .testimonial {
-            max-width: 300px;
-            background: #fff;
-            padding: 22px 18px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(28,31,51,0.06);
-            border: 1px solid #e5e7eb;
-            color: var(--slate-gray);
-            font-family: 'Inter', Arial, sans-serif;
-        }
-        .testimonial strong {
-            color: var(--midnight-blue);
-            font-family: 'Poppins', Arial, sans-serif;
-            font-size: 1em;
-            display: block;
-            margin-top: 10px;
-        }
-        .impact-stats {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            background: var(--soft-white);
-            padding: 30px 10px 40px 10px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .impact-stat {
-            text-align: center;
-        }
-        .impact-stat h3 {
-            font-size: 2em;
-            color: var(--emerald-green);
-            margin-bottom: 6px;
-            font-family: 'Poppins', Arial, sans-serif;
-        }
-        .impact-stat p {
-            color: var(--slate-gray);
-            font-size: 1em;
-            font-family: 'Inter', Arial, sans-serif;
-        }
         footer {
             text-align: center;
             padding: 20px;
@@ -237,6 +176,11 @@
                 gap: 30px;
             }
         }
+        @media (max-width: 700px) {
+            .faq-list, .faq-header {
+                padding: 0 5vw;
+            }
+        }
     </style>
 </head>
 <body>
@@ -244,118 +188,137 @@
         <a href="index.html" class="logo" style="text-decoration: none;">Kopa Grow 🌱</a>
         <ul>
             <li><a href="Aboutus.html">About Us</a></li>
+            <li><a href="Loanapplication.html">Loan Application</a></li>
             <li><a href="investorspage.html">Investor Page</a></li>
-            <li><a href="loanapplication.html">Loan Application</a></li>
             <li><a href="faq.html">FAQ</a></li>
         </ul>
     </nav>
-
-    <header>
-        <h1>Empowering Small Businesses to Thrive</h1>
-        <p>Quick, collateral-free loans to help your business grow. 🚀</p>
-        <a href="loanapplication.html" class="cta-button">Get Funded</a>
-    </header>
-
-    <!-- Quick Loans Info Section -->
-    <section id="quick-loans" style="background: #fff; padding: 40px 20px 30px 20px; max-width: 900px; margin: 0 auto 20px auto; border-radius: 14px; box-shadow: 0 2px 8px rgba(28,31,51,0.06); border: 1px solid #e5e7eb; position: relative;">
-        <h2 style="color: var(--emerald-green); font-family: 'Poppins', Arial, sans-serif; margin-top:0;">Our Quick Loans</h2>
-        <p style="color: var(--slate-gray); font-size: 1.1em; max-width: 700px; margin: 0 auto 24px auto;">
-            Fast, flexible micro-loans for small businesses and entrepreneurs. Get approved in minutes and access funds with zero collateral.
-        </p>
-        <div class="loan-features-grid" style="display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; margin-bottom: 18px;">
-            <div class="loan-feature-card" style="flex:1 1 180px; min-width:170px; max-width:200px; background:var(--soft-white); border-radius:10px; box-shadow:0 1px 4px rgba(16,185,129,0.07); padding:18px 12px; text-align:center; border:1px solid #e5e7eb;">
-                <div style="font-size:2em; color:var(--emerald-green); margin-bottom:8px;">💶</div>
-                <div style="font-weight:600; color:var(--midnight-blue); font-family:'Poppins',Arial,sans-serif;">€100 – €10,000</div>
-                <div style="color:var(--slate-gray); font-size:0.98em;">Loan Amounts</div>
-            </div>
-            <div class="loan-feature-card" style="flex:1 1 180px; min-width:170px; max-width:200px; background:var(--soft-white); border-radius:10px; box-shadow:0 1px 4px rgba(16,185,129,0.07); padding:18px 12px; text-align:center; border:1px solid #e5e7eb;">
-                <div style="font-size:2em; color:var(--emerald-green); margin-bottom:8px;">⏱️</div>
-                <div style="font-weight:600; color:var(--midnight-blue); font-family:'Poppins',Arial,sans-serif;">10 min Approval</div>
-                <div style="color:var(--slate-gray); font-size:0.98em;">Super Fast Process</div>
-            </div>
-            <div class="loan-feature-card" style="flex:1 1 180px; min-width:170px; max-width:200px; background:var(--soft-white); border-radius:10px; box-shadow:0 1px 4px rgba(16,185,129,0.07); padding:18px 12px; text-align:center; border:1px solid #e5e7eb;">
-                <div style="font-size:2em; color:var(--emerald-green); margin-bottom:8px;">📅</div>
-                <div style="font-weight:600; color:var(--midnight-blue); font-family:'Poppins',Arial,sans-serif;">1–12 Months</div>
-                <div style="color:var(--slate-gray); font-size:0.98em;">Flexible Repayment</div>
-            </div>
-            <div class="loan-feature-card" style="flex:1 1 180px; min-width:170px; max-width:200px; background:var(--soft-white); border-radius:10px; box-shadow:0 1px 4px rgba(16,185,129,0.07); padding:18px 12px; text-align:center; border:1px solid #e5e7eb;">
-                <div style="font-size:2em; color:var(--emerald-green); margin-bottom:8px;">🔓</div>
-                <div style="font-weight:600; color:var(--midnight-blue); font-family:'Poppins',Arial,sans-serif;">No Collateral</div>
-                <div style="color:var(--slate-gray); font-size:0.98em;">Just Your Potential</div>
-            </div>
-        </div>
-        <button id="loan-details-toggle" style="background:var(--emerald-green); color:#fff; border:none; border-radius:20px; padding:8px 22px; font-family:'Poppins',Arial,sans-serif; font-weight:600; font-size:1em; cursor:pointer; transition:background 0.2s;">More Details</button>
-        <div id="loan-details" style="max-height:0; overflow:hidden; transition:max-height 0.5s cubic-bezier(.4,0,.2,1); margin-top:0;">
-            <ul style="color: var(--slate-gray); font-size: 1em; margin: 24px auto 0 auto; max-width: 700px; padding-left: 1.2em;">
-                <li><strong>Transparent Fees:</strong> No hidden charges, ever</li>
-                <li><strong>Simple Application:</strong> 100% online, mobile-friendly</li>
-                <li><strong>Support:</strong> Our team is here to help you at every step</li>
-            </ul>
-        </div>
-        <script>
-            // Interactivity for loan details toggle
-            const toggleBtn = document.getElementById('loan-details-toggle');
-            const details = document.getElementById('loan-details');
-            let expanded = false;
-            toggleBtn.onclick = function() {
-                expanded = !expanded;
-                if (expanded) {
-                    details.style.maxHeight = "300px";
-                    toggleBtn.textContent = "Hide Details";
-                } else {
-                    details.style.maxHeight = "0";
-                    toggleBtn.textContent = "More Details";
-                }
-            };
-        </script>
-    </section>
-
-    <section id="how-it-works" class="steps">
-        <div class="step">
-                        <h3>Step 1 📝</h3>
-            <p>Sign up and provide basic details.</p>
-        </div>
-        <div class="step">
-                        <h3>Step 2 📊</h3>
-            <p>Get an instant credit assessment.</p>
-        </div>
-        <div class="step">
-                        <h3>Step 3 💸</h3>
-            <p>Receive funds directly to your account.</p>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <h2>What Our Partners Say 💬</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial">
-                <p>"Kopa Grow helped us expand our business in record time!"</p>
-                <strong>- Small Business Owner</strong>
-            </div>
-            <div class="testimonial">
-                <p>"The process was seamless and transparent. Highly recommend!"</p>
-                <strong>- Entrepreneur</strong>
-            </div>
-        </div>
-    </section>
-
-    <section class="impact-stats">
-        <div class="impact-stat">
-            <h3>2,000+</h3>
-            <p>Businesses Supported</p>
-        </div>
-        <div class="impact-stat">
-            <h3>€10M+</h3>
-            <p>Loans Disbursed</p>
-        </div>
-        <div class="impact-stat">
-            <h3>98%</h3>
-            <p>Repayment Rate</p>
-        </div>
-    </section>
-
+    <div class="faq-header">
+        <h1>Frequently Asked Questions</h1>
+        <div class="faq-subtext">Everything you need to know about investing or borrowing with Kopa Grow.</div>
+    </div>
+    <div class="faq-tabs">
+        <button class="faq-tab-btn active" onclick="showFaqTab('all')">All</button>
+        <button class="faq-tab-btn" onclick="showFaqTab('borrowers')">For Borrowers</button>
+        <button class="faq-tab-btn" onclick="showFaqTab('investors')">For Investors</button>
+    </div>
+    <div class="faq-list" id="faq-list">
+        <!-- FAQ items will be rendered here -->
+    </div>
     <footer>
         <p>&copy; 2025 Kopa Grow. All rights reserved. 🌍</p>
     </footer>
+    <script>
+    // FAQ data
+    const faqs = [
+        // Borrowers
+        {
+            q: "Who can apply for a loan through Kopa Grow?",
+            a: "We work with small business owners, entrepreneurs, and side-hustlers across emerging markets. You must be over 18 and operate a legally recognized business.",
+            tag: "borrowers"
+        },
+        {
+            q: "What documents do I need to apply?",
+            a: "Typically, your ID, proof of business registration, and a recent bank or M-Pesa statement.",
+            tag: "borrowers"
+        },
+        {
+            q: "How long does the application process take?",
+            a: "Applications are reviewed within 3–5 working days.",
+            tag: "borrowers"
+        },
+        {
+            q: "How much can I borrow?",
+            a: "Our loans range from KES 10,000 to KES 500,000 depending on your business profile.",
+            tag: "borrowers"
+        },
+        {
+            q: "Do I need collateral?",
+            a: "Some loans may require it, but many are unsecured based on your credit profile and business performance.",
+            tag: "borrowers"
+        },
+        // Investors
+        {
+            q: "Who can invest through Kopa Grow?",
+            a: "Anyone over 18 with a valid form of ID and a funding source. We welcome both individuals and institutions.",
+            tag: "investors"
+        },
+        {
+            q: "What returns can I expect?",
+            a: "Returns vary by loan type, risk level, and term — typically 8–15% annually.",
+            tag: "investors"
+        },
+        {
+            q: "Is my investment safe?",
+            a: "We vet every borrower and use credit scoring, monitoring, and default protections — but all investments carry some risk.",
+            tag: "investors"
+        },
+        {
+            q: "How do I track my investments?",
+            a: "You'll have a dashboard where you can see repayments, performance, and impact.",
+            tag: "investors"
+        },
+        {
+            q: "Can I choose who I lend to?",
+            a: "Yes — you can browse business profiles and choose who you want to support.",
+            tag: "investors"
+        },
+        // General
+        {
+            q: "Where does Kopa Grow operate?",
+            a: "We currently serve businesses in Kenya and are expanding into other African markets.",
+            tag: "general"
+        },
+        {
+            q: "Is Kopa Grow licensed?",
+            a: "Yes — we operate under local fintech and lending regulations where required.",
+            tag: "general"
+        },
+        {
+            q: "Can I use the platform on mobile?",
+            a: "Absolutely. Kopa Grow is fully responsive and works on all devices.",
+            tag: "general"
+        }
+    ];
+
+    // Render FAQ items
+    function renderFaqs(filter) {
+        const list = document.getElementById('faq-list');
+        list.innerHTML = '';
+        let filtered = faqs.filter(f => filter === 'all' || f.tag === filter || (filter === 'borrowers' && f.tag === 'general') || (filter === 'investors' && f.tag === 'general'));
+        filtered.forEach((faq, idx) => {
+            const item = document.createElement('div');
+            item.className = 'faq-item';
+            item.innerHTML = `
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-icon">➕</span>
+                    ${faq.q}
+                </div>
+                <div class="faq-answer">${faq.a}</div>
+            `;
+            list.appendChild(item);
+        });
+    }
+
+    // Toggle FAQ expand/collapse
+    function toggleFaq(el) {
+        const item = el.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+    }
+
+    // Tab switching
+    function showFaqTab(tab) {
+        document.querySelectorAll('.faq-tab-btn').forEach(btn => btn.classList.remove('active'));
+        if (tab === 'all') document.querySelector('.faq-tab-btn:nth-child(1)').classList.add('active');
+        if (tab === 'borrowers') document.querySelector('.faq-tab-btn:nth-child(2)').classList.add('active');
+        if (tab === 'investors') document.querySelector('.faq-tab-btn:nth-child(3)').classList.add('active');
+        renderFaqs(tab);
+    }
+
+    // Initial render
+    renderFaqs('all');
+    </script>
 </body>
 </html>
