@@ -1,1 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Applications - Kopa Grow</title>
+    <!-- Google Fonts for Poppins and Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --midnight-blue: #1C1F33;
+            --soft-white: #F9FAFB;
+            --slate-gray: #6B7280;
+            --emerald-green: #10B981;
+            --sunset-orange: #F97316;
+            --pending-yellow: #FACC15;
+            --approved-green: #10B981;
+            --rejected-red: #EF4444;
+        }
+        html, body {
+            background-color: var(--soft-white);
+            color: var(--midnight-blue);
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 700;
+            color: var(--midnight-blue);
+            margin-top: 0;
+        }
+        h1 {
+            font-size: 2.2em;
+            color: var(--emerald-green);
+        }
+        h2 {
+            font-size: 1.4em;
+            color: var(--midnight-blue);
+            margin-bottom: 10px;
+        }
+        nav {
+            background-color: var(--midnight-blue);
+            color: var(--soft-white);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: var(--emerald-green) !important;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: var(--soft-white);
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+        nav ul li a:hover {
+            color: var(--emerald-green);
+        }
+        .main-header {
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            text-align: center;
+        }
+        .main-header p {
+            color: var(--slate-gray);
+            font-size: 1.1em;
+            margin-bottom: 18px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin: 32px auto 0 auto;
+            max-width: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(28,31,51,0.06);
+        }
+        .tab-btn {
+            flex: 1 1 0;
+            padding: 16px 0;
+            background: none;
+            border: none;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-size: 1.08em;
+            font-weight: 600;
+            color: var(--midnight-blue);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-btn.active {
+            color: var(--emerald-green);
+            background: #F3F4F6;
+            border-bottom: 3px solid var(--emerald-green);
+        }
+        .tab-content {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 30px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(28,31,51,0.06);
+            padding: 32px 24px 24px 24px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* Form Styles */
+        .form-section-header {
+            font-size: 1.1em;
+            color: var(--emerald-green);
+            margin-bottom: 10px;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--midnight-blue);
+            font-family: 'Inter', Arial, sans-serif;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #DADCE0;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: 'Inter', Arial, sans-serif;
+            background: var(--soft-white);
+            transition: border 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--emerald-green);
+            outline: none;
+        }
+        .form-group .error {
+            color: #EA4335;
+            font-size: 0.9em;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 13px 28px;
+            font-size: 1em;
+            color: #fff;
+            background-color: var(--emerald-green);
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        .cta-button:hover {
+            background: var(--sunset-orange);
+        }
+        /* Application List Styles */
+        .app-list {
+            margin-top: 10px;
+        }
+        .app-card {
+            background: var(--soft-white);
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(28,31,51,0.06);
+            padding: 18px 16px;
+            margin-bottom: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #e5e7eb;
+        }
+        .app-info {
+            flex: 1 1 200px;
+        }
+        .app-info span {
+            display: block;
+            color: var(--slate-gray);
+            font-size: 0.97em;
+        }
+        .app-status {
+            font-weight: 600;
+            font-size: 1em;
+            border-radius: 14px;
+            padding: 5px 16px;
+            margin-left: 10px;
+            display: inline-block;
+        }
+        .status-pending {
+            background: var(--pending-yellow);
+            color: #7c5c00;
+        }
+        .status-approved {
+            background: var(--approved-green);
+            color: #fff;
+        }
+        .status-rejected {
+            background: var(--rejected-red);
+            color: #fff;
+        }
+        .app-actions {
+            margin-left: 20px;
+        }
+        .app-actions button {
+            background: none;
+            border: none;
+            color: var(--emerald-green);
+            font-size: 1em;
+            cursor: pointer;
+            margin-right: 10px;
+            font-family: 'Inter', Arial, sans-serif;
+            transition: color 0.2s;
+        }
+        .app-actions button:hover {
+            color: var(--sunset-orange);
+        }
+        /* File input styling */
+        .form-group input[type="file"] {
+            padding: 6px 0;
+        }
+        /* Responsive */
+        @media (max-width: 700px) {
+            .tab-content, .main-header {
+                padding: 18px 5vw 18px 5vw;
+            }
+            .app-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .app-actions {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo" style="text-decoration: none;">Kopa Grow 🌱</a>
+        <ul>
+            <li><a href="Aboutus.html">About Us</a></li>
+            <li><a href="investorspage.html">Investor Page</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-header">
+        <h1>Loan Applications</h1>
+        <p>Apply for funding or track your current application progress.</p>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('new-app')">📝 New Application</button>
+        <button class="tab-btn" onclick="showTab('my-apps')">📋 My Applications</button>
+    </div>
+
+    <!-- New Application Tab -->
+    <div class="tab-content active" id="tab-new-app">
+        <form id="loan-form" enctype="multipart/form-data" autocomplete="off">
+            <div class="form-section-header">Business Information</div>
+            <div class="form-group">
+                <label for="business-name">Business Name</label>
+                <input type="text" id="business-name" placeholder="e.g. Green Grocers Ltd">
+                <div class="error" style="display: none;">This field is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="business-type">Business Type</label>
+                <select id="business-type">
+                    <option value="">Select type</option>
+                    <option value="retail">Retail</option>
+                    <option value="services">Services</option>
+                    <option value="manufacturing">Manufacturing</option>
+                    <option value="agriculture">Agriculture</option>
+                    <option value="other">Other</option>
+                </select>
+                <div class="error" style="display: none;">Please select a business type.</div>
+            </div>
+            <div class="form-group">
+                <label for="location-country">Country</label>
+                <input type="text" id="location-country" placeholder="e.g. Kenya">
+                <div class="error" style="display: none;">This field is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="location-city">City/Town</label>
+                <input type="text" id="location-city" placeholder="e.g. Nairobi">
+                <div class="error" style="display: none;">This field is required.</div>
+            </div>
+            <div class="form-section-header">Loan Request</div>
+            <div class="form-group">
+                <label for="loan-amount">Amount Requested</label>
+                <input type="number" id="loan-amount" placeholder="e.g. 5000">
+                <div class="error" style="display: none;">Please enter a valid amount.</div>
+            </div>
+            <div class="form-group">
+                <label for="loan-purpose">Purpose of Loan</label>
+                <select id="loan-purpose">
+                    <option value="">Select purpose</option>
+                    <option value="working-capital">Working Capital</option>
+                    <option value="equipment">Equipment Purchase</option>
+                    <option value="expansion">Business Expansion</option>
+                    <option value="inventory">Inventory</option>
+                    <option value="other">Other</option>
+                </select>
+                <div class="error" style="display: none;">Please select a purpose.</div>
+            </div>
+            <div class="form-group">
+                <label for="repayment-duration">Repayment Duration</label>
+                <select id="repayment-duration">
+                    <option value="">Select duration</option>
+                    <option value="3">3 months</option>
+                    <option value="6">6 months</option>
+                    <option value="12">12 months</option>
+                </select>
+                <div class="error" style="display: none;">Please select a duration.</div>
+            </div>
+            <div class="form-section-header">Additional Info</div>
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" placeholder="e.g. Jane Doe">
+                <div class="error" style="display: none;">This field is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="e.g. jane@email.com">
+                <div class="error" style="display: none;">Please enter a valid email address.</div>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="tel" id="phone-number" placeholder="e.g. +254712345678">
+                <div class="error" style="display: none;">Please enter a valid phone number.</div>
+            </div>
+            <div class="form-group">
+                <label for="registration-doc">Business Registration Document</label>
+                <input type="file" id="registration-doc" accept=".pdf,.jpg,.jpeg,.png">
+                <div class="error" style="display: none;">Please upload a document.</div>
+            </div>
+            <div class="form-group">
+                <label for="bank-account">Bank or M-Pesa Account (optional)</label>
+                <input type="text" id="bank-account" placeholder="e.g. 0712345678 or Bank IBAN">
+            </div>
+            <div class="form-group">
+                <label for="additional-notes">Additional Notes</label>
+                <textarea id="additional-notes" placeholder="Enter any additional information" rows="3"></textarea>
+            </div>
+            <button type="submit" class="cta-button">Submit Application</button>
+        </form>
+    </div>
+
+    <!-- My Applications Tab -->
+    <div class="tab-content" id="tab-my-apps">
+        <h2>My Applications</h2>
+        <div class="app-list" id="app-list">
+            <!-- Example cards, replace with dynamic data as needed -->
+            <div class="app-card">
+                <div class="app-info">
+                    <span><strong>ID:</strong> #1001</span>
+                    <span><strong>Date:</strong> 2024-06-01</span>
+                    <span><strong>Amount:</strong> €5,000</span>
+                </div>
+                <span class="app-status status-pending">🕒 Pending</span>
+                <div class="app-actions">
+                    <button title="View">View</button>
+                    <button title="Cancel">Cancel</button>
+                </div>
+            </div>
+            <div class="app-card">
+                <div class="app-info">
+                    <span><strong>ID:</strong> #1000</span>
+                    <span><strong>Date:</strong> 2024-05-20</span>
+                    <span><strong>Amount:</strong> €2,500</span>
+                </div>
+                <span class="app-status status-approved">✅ Approved</span>
+                <div class="app-actions">
+                    <button title="View">View</button>
+                </div>
+            </div>
+            <div class="app-card">
+                <div class="app-info">
+                    <span><strong>ID:</strong> #0999</span>
+                    <span><strong>Date:</strong> 2024-05-10</span>
+                    <span><strong>Amount:</strong> €1,000</span>
+                </div>
+                <span class="app-status status-rejected">❌ Rejected</span>
+                <div class="app-actions">
+                    <button title="View">View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Kopa Grow. All rights reserved. 🌍</p>
+    </footer>
+
+    <script>
+        // Tab switching logic
+        function showTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+                btn.classList.toggle('active', btn.getAttribute('onclick').includes(tab));
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.toggle('active', content.id === 'tab-' + tab);
+            });
+        }
+
+        // Example: Form validation (expand as needed)
+        document.getElementById('loan-form').onsubmit = function(e) {
+            e.preventDefault();
+            let valid = true;
+            // ...simple validation for required fields...
+            [
+                ['business-name', 'This field is required.'],
+                ['business-type', 'Please select a business type.'],
+                ['location-country', 'This field is required.'],
+                ['location-city', 'This field is required.'],
+                ['loan-amount', 'Please enter a valid amount.'],
+                ['loan-purpose', 'Please select a purpose.'],
+                ['repayment-duration', 'Please select a duration.'],
+                ['full-name', 'This field is required.'],
+                ['email', 'Please enter a valid email address.'],
+                ['phone-number', 'Please enter a valid phone number.'],
+                ['registration-doc', 'Please upload a document.']
+            ].forEach(([id, msg]) => {
+                const el = document.getElementById(id);
+                const error = el.parentElement.querySelector('.error');
+                if (
+                    (el.type === 'file' && !el.value) ||
+                    (el.tagName === 'SELECT' && !el.value) ||
+                    (!el.value && el.type !== 'file' && el.tagName !== 'SELECT')
+                ) {
+                    error.style.display = 'block';
+                    error.textContent = msg;
+                    valid = false;
+                } else {
+                    error.style.display = 'none';
+                }
+            });
+            if (valid) {
+                alert('Application submitted! (Demo only)');
+                this.reset();
+            }
+        };
+    </script>
+</body>
+</html>
 
